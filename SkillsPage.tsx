@@ -1,7 +1,8 @@
+
 import React from 'react';
-import { skillCategoriesData } from '../data';
-import { SkillCategory } from '../types';
-import { Section } from '../components/Section';
+import { skillCategoriesData } from './data';
+import { SkillCategory } from './types';
+import { Section } from './components/Section';
 
 const SkillBadge: React.FC<{ skill: string }> = ({ skill }) => (
   <span className="inline-block bg-dark-primary border border-neon-blue/50 text-neon-blue text-sm font-medium mr-2 mb-2 px-4 py-2 rounded-full shadow-sm hover:bg-neon-blue/20 hover:shadow-neon-glow-blue transition-all duration-300 cursor-default transform hover:scale-105">

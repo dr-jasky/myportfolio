@@ -1,9 +1,9 @@
 
 import React, { useState, useEffect, useMemo } from 'react';
-import { publicationsData } from '../data';
-import { Publication, PublicationType, ImpactMetric } from '../types';
-import { Section } from '../components/Section';
-import { generateAPA, generateBibTeX, getJournalParts as getJournalPartsUtil } from '../utils/citationGenerators';
+import { publicationsData } from './data';
+import { Publication, PublicationType, ImpactMetric } from './types';
+import { Section } from './components/Section';
+import { generateAPA, generateBibTeX, getJournalParts as getJournalPartsUtil } from './utils/citationGenerators';
 
 const ImpactMetricBadge: React.FC<{ metric: ImpactMetric }> = ({ metric }) => {
   let colorClass = 'bg-neon-blue/20 text-neon-blue';
@@ -191,7 +191,7 @@ const PublicationCard: React.FC<{ pub: Publication }> = ({ pub }) => {
             href={pub.doiLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-neon-pink hover:text-opacity-80 hover:underline text-sm font-medium transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon-pink focus-visible:ring-offset-2 focus-visible:ring-offset-dark-secondary rounded-sm"
+            className="text-neon-pink hover:text-opacity-80 hover:underline text-sm font-medium transition-colors duration-300"
             aria-label={`Read full paper of ${pub.title} via DOI`}
           >
             <i className="fas fa-link mr-1"></i> DOI Link
@@ -202,7 +202,7 @@ const PublicationCard: React.FC<{ pub: Publication }> = ({ pub }) => {
             href={pub.link}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-neon-pink hover:text-opacity-80 hover:underline text-sm font-medium transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon-pink focus-visible:ring-offset-2 focus-visible:ring-offset-dark-secondary rounded-sm"
+            className="text-neon-pink hover:text-opacity-80 hover:underline text-sm font-medium transition-colors duration-300"
             aria-label={`View details for ${pub.title}`}
           >
             <i className="fas fa-external-link-alt mr-1"></i> View Source
@@ -210,7 +210,7 @@ const PublicationCard: React.FC<{ pub: Publication }> = ({ pub }) => {
         )}
         <button 
           onClick={() => setShowCitations(!showCitations)}
-          className="text-neon-green hover:text-opacity-80 hover:underline text-sm font-medium transition-colors duration-300 py-1 px-2 rounded bg-dark-primary/50 border border-neon-green/30 hover:border-neon-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon-green focus-visible:ring-offset-2 focus-visible:ring-offset-dark-secondary"
+          className="text-neon-green hover:text-opacity-80 hover:underline text-sm font-medium transition-colors duration-300 py-1 px-2 rounded bg-dark-primary/50 border border-neon-green/30 hover:border-neon-green"
           aria-expanded={showCitations}
           aria-controls={`citations-${pub.id}`}
         >
@@ -227,7 +227,7 @@ const PublicationCard: React.FC<{ pub: Publication }> = ({ pub }) => {
             </div>
             <button 
               onClick={() => handleCopy(apaCitation, 'APA Citation')}
-              className="mt-2 px-3 py-1 text-xs bg-neon-blue text-dark-primary rounded hover:bg-opacity-80 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon-blue focus-visible:ring-offset-2 focus-visible:ring-offset-dark-tertiary"
+              className="mt-2 px-3 py-1 text-xs bg-neon-blue text-dark-primary rounded hover:bg-opacity-80 transition-colors"
               aria-label="Copy APA citation to clipboard"
             >
               <i className="fas fa-copy mr-1"></i> Copy APA
@@ -240,7 +240,7 @@ const PublicationCard: React.FC<{ pub: Publication }> = ({ pub }) => {
             </pre>
             <button 
               onClick={() => handleCopy(bibtexCitation, 'BibTeX')}
-              className="mt-2 px-3 py-1 text-xs bg-neon-blue text-dark-primary rounded hover:bg-opacity-80 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon-blue focus-visible:ring-offset-2 focus-visible:ring-offset-dark-tertiary"
+              className="mt-2 px-3 py-1 text-xs bg-neon-blue text-dark-primary rounded hover:bg-opacity-80 transition-colors"
               aria-label="Copy BibTeX citation to clipboard"
             >
               <i className="fas fa-copy mr-1"></i> Copy BibTeX
@@ -321,9 +321,8 @@ export const ResearchPage: React.FC = () => {
                 onClick={() => setSortOption(option)}
                 className={`px-4 py-2 text-sm font-medium rounded-md transition-all duration-200
                   ${sortOption === option 
-                    ? 'bg-neon-blue text-dark-primary shadow-neon-glow-blue focus-visible:ring-neon-blue' 
-                    : 'bg-dark-tertiary text-light-secondary hover:bg-neon-pink hover:text-dark-primary focus-visible:ring-neon-pink'
-                  } focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-dark-secondary/50`}
+                    ? 'bg-neon-blue text-dark-primary shadow-neon-glow-blue' 
+                    : 'bg-dark-tertiary text-light-secondary hover:bg-neon-pink hover:text-dark-primary'}`}
                 aria-pressed={sortOption === option}
               >
                 {option === 'year-desc' && <><i className="fas fa-calendar-alt mr-1.5"></i>Year (Newest First)</>}

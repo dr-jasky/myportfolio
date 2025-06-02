@@ -1,8 +1,8 @@
+
 import React from 'react';
-import { personalInfoData, educationData } from '../data'; // Assuming education is part of about
-import { Section } from '../components/Section';
-import { EducationItem as EducationItemType } from '../types';
-import { CVLinkButton } from '../components/CVLinkButton'; // Import CVLinkButton
+import { personalInfoData, educationData } from './data'; // Assuming education is part of about
+import { Section } from './components/Section';
+import { EducationItem as EducationItemType } from './types';
 
 const EducationItemCard: React.FC<{ item: EducationItemType }> = ({ item }) => (
   <div className="mb-6 p-5 bg-dark-secondary rounded-lg shadow-lg border-l-4 border-neon-pink transition-all duration-300 hover:shadow-neon-glow-pink">
@@ -32,10 +32,15 @@ export const AboutPage: React.FC = () => {
             <p className="text-sm text-light-secondary">{personalInfoData.subtitle}</p>
             {personalInfoData.cvUrl && (
                  <div className="mt-8">
-                    <CVLinkButton 
+                    <a 
+                        href={personalInfoData.cvUrl} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
                         className="inline-flex items-center bg-neon-blue hover:bg-opacity-80 text-dark-primary font-semibold py-3 px-6 rounded-lg shadow-neon-glow-blue transition-all duration-300 transform hover:scale-105"
-                        // iconClass prop is now handled by CVLinkButton's default
-                    />
+                    >
+                        <i className="fas fa-download mr-2"></i>
+                        Download CV
+                    </a>
                 </div>
             )}
           </div>

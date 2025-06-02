@@ -1,7 +1,8 @@
+
 import React from 'react';
-import { educationData, certificationsData } from '../data';
-import { EducationItem as EducationItemType, Certification as CertificationType } from '../types';
-import { Section } from '../components/Section';
+import { educationData, certificationsData } from './data';
+import { EducationItem as EducationItemType, Certification as CertificationType } from './types';
+import { Section } from './components/Section';
 
 const EducationItemCard: React.FC<{ item: EducationItemType }> = ({ item }) => (
   <div className="mb-6 p-6 bg-dark-secondary rounded-lg shadow-xl border-l-4 border-neon-pink transition-all duration-300 hover:shadow-neon-glow-pink transform hover:-translate-y-1">

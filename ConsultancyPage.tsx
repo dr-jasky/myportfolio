@@ -1,9 +1,9 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { personalInfoData, consultancyServicesData } from '../data';
-import { Section } from '../components/Section';
-import { ConsultancyService } from '../types';
+import { personalInfoData, consultancyServicesData } from './data';
+import { Section } from './components/Section';
+import { ConsultancyService } from './types';
 
 const ConsultancyServiceCard: React.FC<{ service: ConsultancyService, colorClass: string }> = ({ service, colorClass }) => (
   <div className={`bg-dark-secondary p-6 rounded-xl shadow-xl border-l-4 border-${colorClass} transition-all duration-300 hover:shadow-neon-glow-${colorClass === 'neon-blue' ? 'blue' : 'pink'} transform hover:-translate-y-1`}>
@@ -18,7 +18,7 @@ const ConsultancyServiceCard: React.FC<{ service: ConsultancyService, colorClass
     <Link 
         to="/contact" // Or a specific contact link: `/contact?service=${service.title}`
         state={{ interestedService: service.title }} // Pass state to contact page
-        className={`inline-block bg-transparent border-2 border-${colorClass} text-${colorClass} font-semibold py-2 px-5 rounded-lg hover:bg-${colorClass} hover:text-dark-primary transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-dark-secondary focus-visible:ring-${colorClass}`}
+        className={`inline-block bg-transparent border-2 border-${colorClass} text-${colorClass} font-semibold py-2 px-5 rounded-lg hover:bg-${colorClass} hover:text-dark-primary transition-all duration-300`}
     >
         Inquire About This Service
     </Link>
@@ -55,7 +55,7 @@ export const ConsultancyPage: React.FC = () => {
             </p>
             <Link 
               to="/contact"
-              className="inline-block bg-neon-pink hover:bg-opacity-80 text-dark-primary font-semibold py-3 px-8 rounded-lg shadow-neon-glow-pink transition-all duration-300 transform hover:scale-105 text-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon-pink focus-visible:ring-offset-2 focus-visible:ring-offset-dark-secondary"
+              className="inline-block bg-neon-pink hover:bg-opacity-80 text-dark-primary font-semibold py-3 px-8 rounded-lg shadow-neon-glow-pink transition-all duration-300 transform hover:scale-105 text-lg"
             >
               Contact Me
             </Link>

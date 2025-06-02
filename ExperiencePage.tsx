@@ -1,7 +1,8 @@
+
 import React from 'react';
-import { experienceData } from '../data';
-import { Experience } from '../types';
-import { Section } from '../components/Section';
+import { experienceData } from './data';
+import { Experience } from './types';
+import { Section } from './components/Section';
 
 const ExperienceItem: React.FC<{ item: Experience }> = ({ item }) => (
   <div className="mb-8 p-6 bg-dark-secondary rounded-lg shadow-xl border-l-4 border-neon-green transition-all duration-300 hover:shadow-neon-glow-blue hover:border-neon-blue transform hover:-translate-y-1">

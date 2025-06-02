@@ -1,9 +1,8 @@
 
 import React from 'react';
-import { personalInfoData, contactLinksData } from '../data';
-import { Section } from '../components/Section';
-import { ContactLink } from '../types';
-import { CVLinkButton } from '../components/CVLinkButton'; // Import CVLinkButton
+import { personalInfoData, contactLinksData } from './data';
+import { Section } from './components/Section';
+import { ContactLink } from './types';
 
 export const ContactPage: React.FC = () => {
   const formspreeEndpointId = "yourFormspreeID"; // IMPORTANT: Replace with your actual Formspree endpoint ID
@@ -21,22 +20,14 @@ export const ContactPage: React.FC = () => {
             <div className="space-y-5">
               <div className="flex items-center group">
                 <i className="fas fa-envelope text-neon-blue text-2xl mr-4 w-6 text-center group-hover:animate-pulseGlow [--tw-shadow-color:theme('colors.neon-blue')]"></i>
-                <a 
-                    href={`mailto:${personalInfoData.email}`} 
-                    className="text-light-primary hover:text-neon-blue transition-colors break-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon-blue focus-visible:ring-offset-2 focus-visible:ring-offset-dark-secondary rounded-sm"
-                >
+                <a href={`mailto:${personalInfoData.email}`} className="text-light-primary hover:text-neon-blue transition-colors break-all">
                   {personalInfoData.email}
                 </a>
               </div>
-              {contactLinksData.filter(link => link.id !== 'cl1').map((link: ContactLink) => ( // Exclude email as it's handled above
+              {contactLinksData.filter(link => link.id !== 'cl1').map((link: ContactLink) => (
                 <div key={link.id} className="flex items-center group">
                   <i className={`${link.iconClass} text-neon-blue text-2xl mr-4 w-6 text-center group-hover:animate-pulseGlow [--tw-shadow-color:theme('colors.neon-blue')]`}></i>
-                  <a 
-                    href={link.url} 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="text-light-primary hover:text-neon-blue transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon-blue focus-visible:ring-offset-2 focus-visible:ring-offset-dark-secondary rounded-sm"
-                  >
+                  <a href={link.url} target="_blank" rel="noopener noreferrer" className="text-light-primary hover:text-neon-blue transition-colors">
                     {link.name} Profile
                   </a>
                 </div>
@@ -48,7 +39,7 @@ export const ContactPage: React.FC = () => {
                         href={personalInfoData.cvUrl} 
                         target="_blank" 
                         rel="noopener noreferrer"
-                        className="inline-flex items-center bg-transparent border-2 border-neon-blue text-neon-blue font-semibold py-3 px-6 rounded-lg shadow-neon-glow-blue hover:bg-neon-blue hover:text-dark-primary transition-all duration-300 transform hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon-blue focus-visible:ring-offset-2 focus-visible:ring-offset-dark-secondary"
+                        className="inline-flex items-center bg-transparent border-2 border-neon-blue text-neon-blue font-semibold py-3 px-6 rounded-lg shadow-neon-glow-blue hover:bg-neon-blue hover:text-dark-primary transition-all duration-300 transform hover:scale-105"
                     >
                         <i className="fas fa-download mr-2"></i>
                         Download My CV
@@ -62,22 +53,22 @@ export const ContactPage: React.FC = () => {
             <form action={`https://formspree.io/f/${formspreeEndpointId}`} method="POST">
               <div className="mb-5">
                 <label htmlFor="name" className="block text-sm font-medium text-light-secondary mb-1">Full Name</label>
-                <input type="text" name="name" id="name" required className="w-full px-4 py-3 bg-dark-primary border border-neon-blue/30 rounded-lg text-light-primary shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon-pink focus-visible:ring-offset-2 focus-visible:ring-offset-dark-primary focus-visible:border-neon-pink" />
+                <input type="text" name="name" id="name" required className="w-full px-4 py-3 bg-dark-primary border border-neon-blue/30 rounded-lg focus:ring-2 focus:ring-neon-pink focus:border-neon-pink text-light-primary shadow-sm transition-colors" />
               </div>
               <div className="mb-5">
                 <label htmlFor="email" className="block text-sm font-medium text-light-secondary mb-1">Email Address</label>
-                <input type="email" name="email" id="email" required className="w-full px-4 py-3 bg-dark-primary border border-neon-blue/30 rounded-lg text-light-primary shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon-pink focus-visible:ring-offset-2 focus-visible:ring-offset-dark-primary focus-visible:border-neon-pink" />
+                <input type="email" name="email" id="email" required className="w-full px-4 py-3 bg-dark-primary border border-neon-blue/30 rounded-lg focus:ring-2 focus:ring-neon-pink focus:border-neon-pink text-light-primary shadow-sm transition-colors" />
               </div>
               <div className="mb-5">
                 <label htmlFor="subject" className="block text-sm font-medium text-light-secondary mb-1">Subject</label>
-                <input type="text" name="subject" id="subject" required className="w-full px-4 py-3 bg-dark-primary border border-neon-blue/30 rounded-lg text-light-primary shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon-pink focus-visible:ring-offset-2 focus-visible:ring-offset-dark-primary focus-visible:border-neon-pink" />
+                <input type="text" name="subject" id="subject" required className="w-full px-4 py-3 bg-dark-primary border border-neon-blue/30 rounded-lg focus:ring-2 focus:ring-neon-pink focus:border-neon-pink text-light-primary shadow-sm transition-colors" />
               </div>
               <div className="mb-6">
                 <label htmlFor="message" className="block text-sm font-medium text-light-secondary mb-1">Message</label>
-                <textarea name="message" id="message" rows={5} required className="w-full px-4 py-3 bg-dark-primary border border-neon-blue/30 rounded-lg text-light-primary shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon-pink focus-visible:ring-offset-2 focus-visible:ring-offset-dark-primary focus-visible:border-neon-pink"></textarea>
+                <textarea name="message" id="message" rows={5} required className="w-full px-4 py-3 bg-dark-primary border border-neon-blue/30 rounded-lg focus:ring-2 focus:ring-neon-pink focus:border-neon-pink text-light-primary shadow-sm transition-colors"></textarea>
               </div>
               <div>
-                <button type="submit" className="w-full bg-neon-pink hover:bg-opacity-80 text-dark-primary font-semibold py-3 px-6 rounded-lg shadow-neon-glow-pink transition-all duration-300 transform hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon-pink focus-visible:ring-offset-2 focus-visible:ring-offset-dark-secondary">
+                <button type="submit" className="w-full bg-neon-pink hover:bg-opacity-80 text-dark-primary font-semibold py-3 px-6 rounded-lg shadow-neon-glow-pink transition-all duration-300 transform hover:scale-105">
                   Send Message <i className="fas fa-paper-plane ml-2"></i>
                 </button>
               </div>

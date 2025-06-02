@@ -1,9 +1,9 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { personalInfoData, publicationsData, testimonialsData } from '../data';
-import { Section } from '../components/Section';
-import { KeyStat, Publication, Testimonial } from '../types';
+import { personalInfoData, publicationsData, testimonialsData } from './data';
+import { Section } from './components/Section';
+import { KeyStat, Publication, Testimonial } from './types';
 
 const KeyMetrics: React.FC<{ stats: KeyStat[] }> = ({ stats }) => {
   if (!stats || stats.length === 0) return null;
@@ -71,13 +71,13 @@ const HeroSection: React.FC = () => (
       <div className="space-y-4 sm:space-y-0 sm:space-x-6 animate-fadeIn" style={{animationDelay: '0.9s'}}>
         <Link 
           to="/research"
-          className="inline-block bg-neon-blue hover:bg-opacity-80 text-dark-primary font-semibold py-3.5 px-10 rounded-lg shadow-neon-glow-blue transition-all duration-300 transform hover:scale-105 text-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon-blue focus-visible:ring-offset-2 focus-visible:ring-offset-dark-primary"
+          className="inline-block bg-neon-blue hover:bg-opacity-80 text-dark-primary font-semibold py-3.5 px-10 rounded-lg shadow-neon-glow-blue transition-all duration-300 transform hover:scale-105 text-lg"
         >
           <i className="fas fa-atom mr-2"></i>Explore Research
         </Link>
         <Link 
           to="/consultancy"
-          className="inline-block bg-transparent hover:bg-neon-pink border-2 border-neon-pink text-neon-pink hover:text-dark-primary font-semibold py-3.5 px-10 rounded-lg shadow-neon-glow-pink transition-all duration-300 transform hover:scale-105 text-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon-pink focus-visible:ring-offset-2 focus-visible:ring-offset-dark-primary"
+          className="inline-block bg-transparent hover:bg-neon-pink border-2 border-neon-pink text-neon-pink hover:text-dark-primary font-semibold py-3.5 px-10 rounded-lg shadow-neon-glow-pink transition-all duration-300 transform hover:scale-105 text-lg"
         >
           <i className="fas fa-hands-helping mr-2"></i>Offer Consultancy
         </Link>
@@ -100,7 +100,7 @@ const ImpactCard: React.FC<{ title: string; linkTo: string; icon: string; descri
   return (
     <Link 
       to={linkTo} 
-      className={`group block p-6 bg-dark-secondary rounded-xl shadow-xl ${hoverShadow} transition-all duration-300 transform hover:-translate-y-2 border-2 border-transparent ${hoverBorderColor} animate-fadeIn focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-dark-secondary focus-visible:ring-${colorClass}`}
+      className={`group block p-6 bg-dark-secondary rounded-xl shadow-xl ${hoverShadow} transition-all duration-300 transform hover:-translate-y-2 border-2 border-transparent ${hoverBorderColor} animate-fadeIn`}
       style={{ animationDelay: `${delay}s`}}
     >
       <div className={`flex items-center text-${colorClass} mb-4`}>
@@ -130,12 +130,7 @@ const PublicationPreviewCard: React.FC<{ pub: Publication }> = ({ pub }) => (
         ))}
       </div>
     )}
-    <Link 
-        to={`/research#${pub.id}`} 
-        className="text-xs text-neon-pink hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon-pink focus-visible:ring-offset-2 focus-visible:ring-offset-dark-secondary rounded"
-    >
-        View Details &rarr;
-    </Link>
+    <Link to={`/research#${pub.id}`} className="text-xs text-neon-pink hover:underline">View Details &rarr;</Link>
   </div>
 );
 
@@ -169,28 +164,15 @@ const ResearchHighlightCard: React.FC<{ pub: Publication }> = ({ pub }) => (
       )}
       <div className="mt-auto">
         {pub.doiLink ? (
-          <a 
-            href={pub.doiLink} 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            className="text-sm text-neon-pink hover:underline font-medium group-hover:text-neon-blue transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon-pink focus-visible:ring-offset-2 focus-visible:ring-offset-dark-secondary rounded"
-          >
+          <a href={pub.doiLink} target="_blank" rel="noopener noreferrer" className="text-sm text-neon-pink hover:underline font-medium group-hover:text-neon-blue transition-colors">
             Read Full Paper (DOI) <i className="fas fa-external-link-alt ml-1"></i>
           </a>
         ) : pub.link ? (
-          <a 
-            href={pub.link} 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            className="text-sm text-neon-pink hover:underline font-medium group-hover:text-neon-blue transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon-pink focus-visible:ring-offset-2 focus-visible:ring-offset-dark-secondary rounded"
-          >
+          <a href={pub.link} target="_blank" rel="noopener noreferrer" className="text-sm text-neon-pink hover:underline font-medium group-hover:text-neon-blue transition-colors">
             View Source <i className="fas fa-external-link-alt ml-1"></i>
           </a>
         ) : (
-           <Link 
-            to={`/research#${pub.id}`} 
-            className="text-sm text-neon-pink hover:underline font-medium group-hover:text-neon-blue transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon-pink focus-visible:ring-offset-2 focus-visible:ring-offset-dark-secondary rounded"
-           >
+           <Link to={`/research#${pub.id}`} className="text-sm text-neon-pink hover:underline font-medium group-hover:text-neon-blue transition-colors">
             Learn More on Site <i className="fas fa-arrow-right ml-1"></i>
           </Link>
         )}
@@ -276,7 +258,7 @@ export const HomePage: React.FC = () => {
           <div className="text-center mt-10">
               <Link 
                 to="/research"
-                className="inline-block bg-neon-blue hover:bg-opacity-80 text-dark-primary font-semibold py-3 px-8 rounded-lg shadow-neon-glow-blue transition-all duration-300 transform hover:scale-105 text-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon-blue focus-visible:ring-offset-2 focus-visible:ring-offset-dark-secondary"
+                className="inline-block bg-neon-blue hover:bg-opacity-80 text-dark-primary font-semibold py-3 px-8 rounded-lg shadow-neon-glow-blue transition-all duration-300 transform hover:scale-105 text-md"
               >
                 View All Publications
               </Link>
